@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<style>
+  .toggle-container {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 1.5rem;
+    overflow: hidden;
+
+    margin: 0.8rem;
+  }
+
+  .toggle-option {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .toggle-option input {
+    display: none; /* Hide the radio buttons */
+  }
+
+  .toggle-option h6 {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  .toggle-option input:checked + h6 {
+    background-color: #f5f5f5; /* Selected background */
+    border: 1px solid black; /* Add border to selected option */
+    border-radius: 1.5rem; /* Make it look smooth */
+    color: black;
+    font-weight: bold;
+  }
+
+  .toggle-option:not(:last-child)::after {
+    content: "";
+    width: 1px;
+    height: 60%;
+    background-color: #ddd;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+</style>
+
+<div class="toggle-container">
+  <label class="toggle-option">
+    <input type="radio" name="type-of-place" value="any" checked />
+    <h6>Any type</h6>
+  </label>
+  <label class="toggle-option">
+    <input type="radio" name="type-of-place" value="room" />
+    <h6>Room</h6>
+  </label>
+  <label class="toggle-option">
+    <input type="radio" name="type-of-place" value="entire-home" />
+    <h6>Entire home</h6>
+  </label>
+</div>
+
+<script>
+  document.querySelectorAll("input[name='type-of-place']").forEach((input) => {
+    input.addEventListener("change", (event) => {
+      console.log(`Selected: ${event.target.value}`);
+    });
+  });
+</script>

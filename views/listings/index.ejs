@@ -1,0 +1,396 @@
+<%- layout("/layouts/boilerplate") %> <%= success %>
+
+<body>
+  <style>
+    .slider-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      max-width: 1200px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 10px;
+      /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    }
+
+    .slider {
+      display: flex;
+      height: 5rem;
+      gap: 20px;
+      padding: 8px;
+
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+    }
+
+    /* Slider Item */
+    .slider-item {
+      display: flex;
+      margin-top: 0.5rem;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+      text-align: center;
+      color: #555;
+    }
+
+    .slider-item .icon {
+      font-size: 1rem;
+    }
+
+    .slider-item p {
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .slider-container {
+        width: 90%;
+      }
+
+      .slider-item {
+        min-width: 80px;
+      }
+    }
+
+    .tax-info {
+      display: none;
+    }
+
+    .form-check {
+      margin-left: 0.8rem;
+    }
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+    }
+
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-bottom: 2px;
+      align-items: center;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #333;
+      background-color: #fff;
+      border: 0.2px solid rgb(104, 103, 103);
+      cursor: pointer;
+
+      border-radius: 50%;
+      /* box-shadow: 0 2px 5px rgb(255, 255, 255); */
+      z-index: 10;
+    }
+
+    .slider-button.left {
+      left: 10px;
+    }
+
+    .slider-button.right {
+      right: 10px;
+    }
+
+    .slider-button:hover {
+      background-color: #eee;
+    }
+
+    .navbar2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .tax-toggle {
+      display: flex;
+      align-items: center;
+      border: 0.5px solid rgb(104, 103, 103);
+      border-radius: 1rem;
+      height: 3rem;
+      padding: 1rem;
+      margin-left: 1.3rem;
+    }
+    .like-btn {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .like-btn:hover {
+      color: #ff6b6b;
+    }
+
+    .card-text:hover {
+      text-decoration: none;
+    }
+
+    .listing-image-container {
+      position: relative;
+    }
+
+    .like-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    @media (min-width: 1200px) {
+      .container,
+      .container-lg,
+      .container-md,
+      .container-sm,
+      .container-xl {
+        max-width: 1500px;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .tax-toggle {
+        display: none;
+      }
+    }
+  </style>
+  <!-- <h3>All Listings</h3> -->
+  <!-- <div id="filters">
+    
+    </div> -->
+  <div class="navbar2">
+    <div class="slider-container">
+      <button class="slider-button left" id="leftBtn">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <div class="slider" id="slider">
+        <div class="slider-item">
+          <div class="icon">
+            <i class="fa-solid fa-fire"></i>
+            <p>Trending</p>
+          </div>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-bed"></i></div>
+          <p>Rooms</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-mountain-city"></i></div>
+          <p>Iconic Cities</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-mountain-sun"></i></div>
+          <p>Mountains</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-brands fa-fort-awesome"></i></div>
+          <p>Castles</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-person-swimming"></i></div>
+          <p>Pools</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-campground"></i></div>
+          <p>Camping</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
+          <p>Arctic</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-cow"></i></div>
+          <p>Farms</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-sailboat"></i></div>
+          <p>Boats</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-mug-saucer"></i></div>
+          <p>Bed &amp; Breakfast</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-tree"></i></div>
+          <p>National Parks</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-gift"></i></div>
+          <p>Omg</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-gift"></i></div>
+          <p>Omg</p>
+        </div>
+        <div class="slider-item">
+          <div class="icon"><i class="fa-solid fa-water"></i></div>
+          <p>Island</p>
+        </div>
+      </div>
+      <button class="slider-button right" id="rightBtn">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+
+    <%- include("../includes/ai.ejs") %>
+
+    <div class="tax-toggle">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Display Taxes</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col listing-card">
+        <div class="listing-image-container">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top"
+            alt="listing_img"
+            style="margin: 0; height: 20rem"
+          />
+          <button
+            class="like-btn"
+            id="like-btn-<%= listing._id %>"
+            onclick="handleLike('<%= listing._id %>', event)"
+          >
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p
+            class="card-text"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <b><%= listing.title %></b>
+          </p>
+
+          <p class="card-text">
+            <b> &#8377;<%=listing.price.toLocaleString("en-IN")%></b>/night<i
+              class="tax-info"
+              >&nbsp;+18% GST
+            </i>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+
+  <!-- <ul>
+      <% for(let listing of allListings) { %>
+      <li><a href="/listings/<%=listing._id%>"><%= listing.title %></a></li>
+      <% } %>
+    </ul> -->
+  <script>
+    function handleLike(listingId, event) {
+      // Stop the event from propagating to the parent elements
+      event.stopPropagation();
+      event.preventDefault(); // Also prevent any default behavior, if applicable
+
+      const likeButton = document.getElementById(`like-btn-${listingId}`);
+      const icon = likeButton.querySelector("i");
+
+      // Toggle the heart icon class (add your AJAX logic here if necessary)
+      if (icon.classList.contains("fa-regular")) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+      } else {
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      }
+
+      console.log(`Like button clicked for listing: ${listingId}`);
+    }
+
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+      let taxInfo = document.getElementsByClassName("tax-info");
+      for (let info of taxInfo) {
+        if (info.style.display != "inline") info.style.display = "inline";
+        else info.style.display = "none";
+      }
+    });
+
+    // Get references to the slider and buttons
+    const slider = document.getElementById("slider");
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
+
+    // Define the scroll distance for each click
+    const scrollAmount = 700;
+
+    // Check and update the visibility of the buttons
+    const updateButtonVisibility = () => {
+      // If scrolled all the way to the left, hide the left button
+      if (slider.scrollLeft <= 0) {
+        leftBtn.style.display = "none";
+      } else {
+        leftBtn.style.display = "block";
+      }
+
+      // If scrolled all the way to the right, hide the right button
+      if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth) {
+        rightBtn.style.display = "none";
+      } else {
+        rightBtn.style.display = "block";
+      }
+    };
+
+    // Initial button visibility check
+    updateButtonVisibility();
+
+    // Event listener for the right button
+    rightBtn.addEventListener("click", () => {
+      slider.scrollBy({
+        left: scrollAmount, // Scroll right
+        behavior: "smooth", // Smooth scrolling
+      });
+
+      // Update button visibility after scrolling
+      setTimeout(updateButtonVisibility, 300); // Delay to wait for smooth scroll
+    });
+
+    // Event listener for the left button
+    leftBtn.addEventListener("click", () => {
+      slider.scrollBy({
+        left: -scrollAmount, // Scroll left
+        behavior: "smooth", // Smooth scrolling
+      });
+
+      // Update button visibility after scrolling
+      setTimeout(updateButtonVisibility, 300); // Delay to wait for smooth scroll
+    });
+
+    // Add an event listener to check button visibility when the slider is manually scrolled
+    slider.addEventListener("scroll", updateButtonVisibility);
+  </script>
+</body>

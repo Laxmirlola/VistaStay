@@ -1,4 +1,4 @@
-# VistaStay <img src="/file.svg" alt="logo" width="50" height="50" />
+# VistaStay <img src="/public/file.svg" alt="logo" width="50" height="50" />
 
 **VistaStay** is a full-featured web application that offers functionality similar to Airbnb, built with the **MERN tech stack** (MongoDB, Express.js, React, Node.js). This platform enables users to seamlessly list, explore, and book accommodations, while leveraging advanced features like AI assistance and personalized recommendations.
 

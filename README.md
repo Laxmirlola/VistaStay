@@ -59,10 +59,9 @@ https://github.com/user-attachments/assets/1ff7e126-ad06-4676-b855-ca171701e712
    ```bash
    cd VistaStay
    ```
-3. Install dependencies for both frontend and backend:
+3. Install dependencies:
    ```bash
-   cd client && npm install
-   cd ../server && npm install
+   npm install
    ```
 4. Add environment variables:
    - Create a `.env` file in the `server` directory and include:

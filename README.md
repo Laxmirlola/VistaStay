@@ -23,7 +23,7 @@
 ## Technologies Used
 
 ### Frontend
-- **HTML, CSS**: For building the user interface.
+- **HTML, CSS,  EJS**: For building the user interface.
 - **Bootstrap**: For responsive and user-friendly design.
 
 ### Backend
@@ -42,7 +42,8 @@
 
 https://github.com/user-attachments/assets/1ff7e126-ad06-4676-b855-ca171701e712
 
-
+## Deployment
+The VistaStay is deployed on Render. You can access the live application using the link : ![Link](https://vistastay-mei3.onrender.com/listings)
 
 ## Setup Instructions
 

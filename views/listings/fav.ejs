@@ -1,0 +1,214 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  .slider-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    max-width: 1200px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  }
+
+  .slider {
+    display: flex;
+    height: 5rem;
+    gap: 20px;
+    padding: 8px;
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+  }
+
+  /* Slider Item */
+  .slider-item {
+    display: flex;
+    margin-top: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    text-align: center;
+    color: #555;
+  }
+
+  .slider-item .icon {
+    font-size: 1rem;
+  }
+
+  .slider-item p {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .slider-container {
+      width: 90%;
+    }
+
+    .slider-item {
+      min-width: 80px;
+    }
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+  .form-check {
+    margin-left: 0.8rem;
+  }
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-bottom: 2px;
+    align-items: center;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    border: 0.2px solid rgb(104, 103, 103);
+    cursor: pointer;
+
+    border-radius: 50%;
+    /* box-shadow: 0 2px 5px rgb(255, 255, 255); */
+    z-index: 10;
+  }
+
+  .slider-button.left {
+    left: 10px;
+  }
+
+  .slider-button.right {
+    right: 10px;
+  }
+
+  .slider-button:hover {
+    background-color: #eee;
+  }
+
+  .navbar2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .tax-toggle {
+    display: flex;
+    align-items: center;
+    border: 0.5px solid rgb(104, 103, 103);
+    border-radius: 1rem;
+    height: 3rem;
+    padding: 1rem;
+    margin-left: 1.3rem;
+  }
+  .like-btn {
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: none;
+  }
+  .like-btn:hover {
+    color: #ff6b6b;
+  }
+
+  .card-text:hover {
+    text-decoration: none;
+  }
+
+  .listing-image-container {
+    position: relative;
+  }
+
+  .like-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  @media (min-width: 1200px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+      max-width: 1500px;
+    }
+  }
+
+  @media (max-width: 780px) {
+    .tax-toggle {
+      display: none;
+    }
+  }
+</style>
+<%- include("../includes/ai.ejs") %>
+<div class="row mt-3 mb-2">
+  <div class="col-8 offset-2">
+    <h3>Your Curated Picks</h3>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+      <% for(let listing of allListings) { %> <% if(listing.isLiked) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card">
+          <div class="listing-image-container">
+            <img
+              src="<%= listing.image.url %>"
+              class="card-img-top"
+              alt="listing_img"
+              style="margin: 0; height: 20rem"
+            />
+            <% if(listing.isLiked) { %>
+            <button class="like-btn" id="like-btn-<%= listing._id %>">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            <% } %>
+          </div>
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p
+              class="card-text"
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <b><%= listing.title %></b>
+            </p>
+
+            <p class="card-text">
+              <b> &#8377;<%=listing.price.toLocaleString("en-IN")%></b>/night<i
+                class="tax-info"
+                >&nbsp;+18% GST
+              </i>
+            </p>
+          </div>
+        </div>
+      </a>
+      <% } %> <% } %>
+    </div>
+  </div>
+</div>

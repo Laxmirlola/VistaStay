@@ -92,3 +92,25 @@ module.exports.destroyListing = async (req, res) => {
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
 };
+
+module.exports.likeListing = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+    if (!listing) return res.status(404).json({ error: "Listing not found" });
+
+    // Toggle the isLiked attribute
+    listing.isLiked = !listing.isLiked;
+    await listing.save();
+
+    res.json({ isLiked: listing.isLiked });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+module.exports.showPicks = async (req, res) => {
+  const allListings = await Listing.find({});
+  res.render("listings/fav.ejs", { allListings });
+};

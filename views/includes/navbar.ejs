@@ -110,9 +110,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/listings"
-          ><i class="fa-regular fa-compass"></i
-        ></a>
+        <a class="brand" href="/listings">
+          <img src="/file.svg" alt="Compass Icon" width="50" height="50" />
+        </a>
         <button
           class="navbar-toggler"
           id="navbar-toggler"
@@ -147,8 +147,17 @@
             data-bs-toggle="modal"
             data-bs-target="#exampleModalCenter"
           ></button>
+
           <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/listings/new">Airbnb your home</a>
+            <a class="brand" href="/listings/picks">
+              <img src="/fav.svg" alt="Fav Icon" width="50" height="50" />
+            </a>
+            <a
+              style="display: flex; align-self: center"
+              class="nav-link"
+              href="/listings/new"
+              >Share your space</a
+            >
 
             <div class="btn-group">
               <button
@@ -168,9 +177,13 @@
                 <% } %> <% if(currentUser) { %>
                 <a class="dropdown-item" href="/logout"><b>Log out</b></a>
                 <% } %>
+                <a class="dropdown-item" href="/logout"
+                  ><b>Your Staylist</b>
+                </a>
                 <div class="dropdown-divider"></div>
+
                 <a class="dropdown-item" href="/listings/new"
-                  >Airbnb your home</a
+                  >Share your space</a
                 >
               </div>
             </div>

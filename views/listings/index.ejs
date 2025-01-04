@@ -127,10 +127,10 @@
     }
     .like-btn {
       background-color: transparent;
-      border: none;
       color: #fff;
       font-size: 1.5rem;
       cursor: pointer;
+      box-shadow: none;
     }
     .like-btn:hover {
       color: #ff6b6b;
@@ -272,13 +272,11 @@
             alt="listing_img"
             style="margin: 0; height: 20rem"
           />
-          <button
-            class="like-btn"
-            id="like-btn-<%= listing._id %>"
-            onclick="handleLike('<%= listing._id %>', event)"
-          >
+          <% if(listing.isLiked) { %>
+          <button class="like-btn" id="like-btn-<%= listing._id %>">
             <i class="fa-solid fa-heart"></i>
           </button>
+          <% } %>
         </div>
         <div class="card-img-overlay"></div>
         <div class="card-body">

@@ -18,6 +18,8 @@ router.route("/").get(wrapAsync(listingController.index)).post(
   wrapAsync(listingController.createListing)
 );
 
+router.get("/picks", wrapAsync(listingController.showPicks));
+
 //new route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
@@ -65,6 +67,8 @@ router.get(
 //   validateListing,
 //   wrapAsync(listingController.updateListing)
 // );
+
+router.post("/:id/like", isLoggedIn, wrapAsync(listingController.likeListing));
 
 //delete route
 // router.delete(

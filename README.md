@@ -2,8 +2,6 @@
 
 **VistaStay** is a full-featured web application that offers functionality similar to Airbnb, built with the **MERN tech stack** (MongoDB, Express.js, React, Node.js). This platform enables users to seamlessly list, explore, and book accommodations, while leveraging advanced features like AI assistance and personalized recommendations.
 
----
-
 ## Features
 
 ### 1. **Core Functionalities**
@@ -22,8 +20,6 @@
 - **Responsive Design**: Fully responsive and optimized for mobile, tablet, and desktop devices.
 - **MVC Architecture**: The application follows the Model-View-Controller design pattern to ensure scalability and maintainability.
 
----
-
 ## Technologies Used
 
 ### Frontend
@@ -41,7 +37,12 @@
 - **Cloudinary**: For image hosting and storage.
 - **JWT**: For secure user authentication.
 
----
+## Desktop view
+
+
+https://github.com/user-attachments/assets/1ff7e126-ad06-4676-b855-ca171701e712
+
+
 
 ## Setup Instructions
 
@@ -77,8 +78,6 @@
    ```
 6. Open your browser and navigate to `http://localhost:3000`.
 
----
-
 ## File Structure
 ```
 VistaStay/
@@ -95,20 +94,13 @@ VistaStay/
 └── README.md           
 ```
 
----
-
 ## Future Enhancements
 - **Payment Gateway Integration**: For booking accommodations.
 - **Advanced Analytics**: Track user engagement and optimize listings.
 - **Multi-Language Support**: Expand accessibility for global users.
 
----
-
 ## Contribution
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
----
-
 
 ## Acknowledgments
 - Inspired by Airbnb’s design and functionality.
